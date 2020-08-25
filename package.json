@@ -23,6 +23,9 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
-  }
+
+  },
+
+  "proxy": "https://afternoon-shelf-23667.herokuapp.com"
   
 }
