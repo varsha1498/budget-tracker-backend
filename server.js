@@ -14,7 +14,12 @@ const transactions = require('./routes/transactions.js');
 const authRoutes = require("./routes/auth");
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://vast-wave-09824.herokuapp.com',
+    credentials: true
+
+}));
+
 app.use(express.json());
 
 
@@ -26,9 +31,6 @@ app.use('/api/v1/transactions', transactions);
 app.use('/',authRoutes);
 
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + "client/build/index.html"));
-})
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on  PORT: ${PORT}`));
