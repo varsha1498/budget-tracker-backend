@@ -11,7 +11,7 @@ const path = require('path');
 connectDB();
 
 // const transactions = require('./routes/transactions.js');
-// const authRoutes = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 const app = express();
 
 // app.use(cors({
@@ -23,12 +23,12 @@ const app = express();
 // app.use(express.json());
 
 
-// if(process.env.NODE_ENV === "development"){
-//     app.use(morgan("dev"));
-// }
+if(process.env.NODE_ENV === "development"){
+    app.use(morgan("dev"));
+}
 // // app.use(express.static(path.join(__dirname, "client/build")));
 // app.use('/api/v1/transactions', transactions);
-// app.use('/',authRoutes);
+
 
 
 const PORT = process.env.PORT || 5000;
@@ -37,5 +37,5 @@ const PORT = process.env.PORT || 5000;
 app.get('/api/v1/transactions', (req,res)=>{
     res.send("in the server");
 });
-
+app.use('/',authRoutes);
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on  PORT: ${PORT}`));
